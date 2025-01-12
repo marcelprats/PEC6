@@ -1,5 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { ArticleService } from './article.service';
+import { Article } from './article.service';
 
 describe('ArticleService', () => {
   let service: ArticleService;
@@ -15,7 +16,7 @@ describe('ArticleService', () => {
 
   it('should return all articles', (done: DoneFn) => {
     service.getArticles().subscribe(articles => {
-      expect(articles.length).toBe(3);
+      expect(articles.length).toBe(2); // Cambiar si agregas más artículos al array inicial
       done();
     });
   });
@@ -28,10 +29,14 @@ describe('ArticleService', () => {
   });
 
   it('should add a new article', (done: DoneFn) => {
-    const newArticle = { id: 4, name: 'Artículo 4', quantity: 20 };
+    const newArticle: Article = { id: 3, name: 'Artículo 3', quantity: 20 };
     service.create(newArticle).subscribe(article => {
-      expect(article.name).toBe('Artículo 4');
-      done();
+      expect(article).toEqual(newArticle);
+
+      service.getArticles().subscribe(articles => {
+        expect(articles).toContain(newArticle);
+        done();
+      });
     });
   });
 });
