@@ -9,9 +9,12 @@
   
   <div *ngFor="let article of articles" class="article">
     <h3>{{ article.name }}</h3>
+    <img [src]="article.imageUrl | defaultImage" alt="{{ article.name }}" />
+    <p>Precio: {{ article.price | priceFormat }}</p>
     <p>Cantidad: {{ article.quantity }}</p>
-    <img [src]="article.imageUrl || 'assets/default.jpg'" alt="{{ article.name }}" />
     <button (click)="increaseQuantity(article)">+</button>
     <button (click)="decreaseQuantity(article)">-</button>
   </div>
+  
+  
   

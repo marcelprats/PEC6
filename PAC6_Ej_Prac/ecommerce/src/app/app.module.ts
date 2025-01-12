@@ -5,13 +5,18 @@ import { AppComponent } from './app.component';
 import { ArticleListComponent } from './article-list/article-list.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { PriceFormatPipe } from './pipes/price-format.pipe';
+import { Pipe, PipeTransform } from '@angular/core';
+import { DefaultImagePipe } from './pipes/default-image.pipe';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ArticleListComponent, 
+    ArticleListComponent,
+    PriceFormatPipe,
+    DefaultImagePipe,
   ],
   imports: [
     BrowserModule,
@@ -23,3 +28,4 @@ import { HttpClientModule } from '@angular/common/http';
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}
+

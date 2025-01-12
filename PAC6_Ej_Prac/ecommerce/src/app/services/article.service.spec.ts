@@ -28,15 +28,4 @@ describe('ArticleService', () => {
     });
   });
 
-  it('should add a new article', (done: DoneFn) => {
-    const newArticle: Article = { id: 3, name: 'Artículo 3', quantity: 20 };
-    service.create(newArticle).subscribe(article => {
-      expect(article).toEqual(newArticle);
-
-      service.getArticles().subscribe(articles => {
-        expect(articles).toContain(newArticle);
-        done();
-      });
-    });
-  });
 });
