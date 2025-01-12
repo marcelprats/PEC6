@@ -16,14 +16,14 @@ describe('ArticleService', () => {
 
   it('should return all articles', (done: DoneFn) => {
     service.getArticles().subscribe(articles => {
-      expect(articles.length).toBe(2); // Cambiar si agregas más artículos al array inicial
+      expect(articles.length).toBe(2); 
       done();
     });
   });
 
   it('should change article quantity', (done: DoneFn) => {
     service.changeQuantity(1, 5).subscribe(article => {
-      expect(article.quantity).toBe(15); // Inicialmente era 10
+      expect(article.quantity).toBe(15);
       done();
     });
   });
