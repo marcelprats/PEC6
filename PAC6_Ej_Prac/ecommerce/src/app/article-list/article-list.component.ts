@@ -8,6 +8,7 @@ import { ArticleService, Article } from '../services/article.service';
 })
 export class ArticleListComponent implements OnInit {
   articles: Article[] = [];
+  searchTerm: string = '';
 
   constructor(private articleService: ArticleService) {}
 
@@ -15,21 +16,13 @@ export class ArticleListComponent implements OnInit {
     this.loadArticles();
   }
 
-  loadArticles(): void {
-    this.articleService.getArticles().subscribe(data => {
+  loadArticles(query?: string): void {
+    this.articleService.getArticles(query).subscribe(data => {
       this.articles = data;
     });
   }
 
-  increaseQuantity(article: Article): void {
-    this.articleService.changeQuantity(article.id, 1).subscribe(updatedArticle => {
-      article.quantity = updatedArticle.quantity;
-    });
-  }
-
-  decreaseQuantity(article: Article): void {
-    this.articleService.changeQuantity(article.id, -1).subscribe(updatedArticle => {
-      article.quantity = updatedArticle.quantity;
-    });
+  onSearch(): void {
+    this.loadArticles(this.searchTerm);
   }
 }

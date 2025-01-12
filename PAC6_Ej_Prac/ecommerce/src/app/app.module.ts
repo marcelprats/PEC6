@@ -4,6 +4,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ArticleListComponent } from './article-list/article-list.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 @NgModule({
@@ -14,6 +16,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

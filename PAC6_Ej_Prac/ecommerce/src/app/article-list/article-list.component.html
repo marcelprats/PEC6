@@ -1,6 +1,16 @@
-<div *ngFor="let article of articles" class="article">
+<div>
+    <input
+      type="text"
+      [(ngModel)]="searchTerm"
+      placeholder="Buscar artículos"
+      (input)="onSearch()"
+    />
+  </div>
+  
+  <div *ngFor="let article of articles" class="article">
     <h3>{{ article.name }}</h3>
     <p>Cantidad: {{ article.quantity }}</p>
+    <img [src]="article.imageUrl || 'assets/default.jpg'" alt="{{ article.name }}" />
     <button (click)="increaseQuantity(article)">+</button>
     <button (click)="decreaseQuantity(article)">-</button>
   </div>
